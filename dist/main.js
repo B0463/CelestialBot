@@ -37,9 +37,8 @@ Bot.on('ready', () => {
 Bot.on('messageCreate', (msg) => {
     if (msg.author.bot)
         return;
-    msg.channel.send(msg.content);
     if (msg.content.substring(0, config.prefix.length) == config.prefix) {
-        msg.reply("test");
+        msg.reply("nem to pronto e tão me enchendo o saco?");
     }
 });
 Bot.on("error", (error) => {
