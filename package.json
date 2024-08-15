@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@types/node": "^22.3.0",
+    "typescript": "^5.5.4"
+  }
+}
