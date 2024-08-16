@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FarbeLog_1 = __importDefault(require("./FarbeLog"));
+const commands_1 = __importDefault(require("./commands/commands"));
 const discord_js_1 = require("discord.js");
 const config = require("../config/bot.json");
 const Bot = new discord_js_1.Client({
@@ -35,11 +36,7 @@ Bot.on('ready', () => {
     FarbeLog_1.default.ok.withHour("logged", (_a = Bot.user) === null || _a === void 0 ? void 0 : _a.tag);
 });
 Bot.on('messageCreate', (msg) => {
-    if (msg.author.bot)
-        return;
-    if (msg.content.substring(0, config.prefix.length) == config.prefix) {
-        msg.reply("nem to pronto e tão me enchendo o saco?");
-    }
+    commands_1.default.init(msg, Bot);
 });
 Bot.on("error", (error) => {
     FarbeLog_1.default.error.withHour("client", "error with Bot Client:\n" + error);

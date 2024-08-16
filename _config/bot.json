@@ -1,4 +1,5 @@
 {
     "token": "YOUR_TOKEN_HERE",
-    "prefix": "$"
+    "prefix": "c$",
+    "guildId": "server_id"
 }

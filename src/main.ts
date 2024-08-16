@@ -1,4 +1,5 @@
 import FarbeLog from "./FarbeLog";
+import commands from "./commands/commands";
 import { Client, GatewayIntentBits, GatewayDispatchEvents, Message } from 'discord.js';
 
 const config = require("../config/bot.json");
@@ -32,8 +33,7 @@ Bot.on('ready', () => {
 });
 
 Bot.on('messageCreate', (msg) => {
-    if(msg.author.bot) return;
-    if(msg.content.substring(0, config.prefix.length) == config.prefix) {msg.reply("nem to pronto e tão me enchendo o saco?");}
+    commands.init(msg, Bot);
 });
 Bot.on("error", (error) => {
     FarbeLog.error.withHour("client", "error with Bot Client:\n"+error);
