@@ -3,9 +3,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FarbeLog_1 = __importDefault(require("./FarbeLog"));
+const FarbeLog_1 = __importDefault(require("./functions/FarbeLog"));
 const commands_1 = __importDefault(require("./commands/commands"));
 const discord_js_1 = require("discord.js");
+const database_1 = __importDefault(require("./functions/database"));
 const config = require("../config/bot.json");
 const Bot = new discord_js_1.Client({
     intents: [
@@ -35,6 +36,7 @@ Bot.on('ready', () => {
     var _a;
     FarbeLog_1.default.ok.withHour("logged", (_a = Bot.user) === null || _a === void 0 ? void 0 : _a.tag);
 });
+database_1.default.inicialize();
 Bot.on('messageCreate', (msg) => {
     commands_1.default.init(msg, Bot);
 });

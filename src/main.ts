@@ -1,6 +1,7 @@
-import FarbeLog from "./FarbeLog";
+import FarbeLog from "./functions/FarbeLog";
 import commands from "./commands/commands";
 import { Client, GatewayIntentBits, GatewayDispatchEvents, Message } from 'discord.js';
+import database from "./functions/database";
 
 const config = require("../config/bot.json");
 
@@ -31,6 +32,8 @@ Bot.login(config.token);
 Bot.on('ready', () => {
     FarbeLog.ok.withHour("logged", Bot.user?.tag);
 });
+
+database.inicialize();
 
 Bot.on('messageCreate', (msg) => {
     commands.init(msg, Bot);
