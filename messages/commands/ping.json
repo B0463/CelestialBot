@@ -1,0 +1,12 @@
+{
+    "ping": {
+        "color": "ff0000",
+        "title": "🏓 Ping",
+        "description": "Latency is `...ms`. API Latency is `...ms`"
+    },
+    "pong": {
+        "color": "ff0000",
+        "title": "🏓 Pong",
+        "description": "Latency is `{{ping}}ms`. API Latency is `{{apiPing}}ms`"
+    }
+}

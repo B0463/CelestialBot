@@ -1,11 +1,10 @@
 import { APIEmbed, Message } from "discord.js";
+import messageProcess from "../functions/messageProcess";
+
 export default {
     exec(msg: Message) {
-        const embed: APIEmbed = {
-            color: 0xff0000,
-            title: "Celestial",
-            description: "Did you call me??"
-        };
-        msg.reply({ embeds: [embed] });
+        msg.reply({embeds:[
+            messageProcess.processColor(messageProcess.getCommandMsg("MAIN"))
+        ]});
     }
 };

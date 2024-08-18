@@ -1,18 +1,16 @@
 import { APIEmbed, Message } from "discord.js";
+import messageProcess from "../functions/messageProcess";
+
 export default {
     exec(msg: Message, Bot) {
-        const embed: APIEmbed = {
-            color: 0xff0000,
-            title: "🏓 Ping",
-            description: `Latency is \`...ms\`. API Latency is \`...ms\``
-        };
-        msg.reply({ embeds: [embed] }).then((replyMsg)=>{
-            const embed: APIEmbed = {
-                color: 0xff0000,
-                title: "🏓 Pong",
-                description: `Latency is \`${replyMsg.createdTimestamp - msg.createdTimestamp}ms\`. API Latency is \`${Math.round(Bot.ws.ping)}ms\``
-            };
-            replyMsg.edit({ embeds: [embed] });
+        msg.reply({embeds:[
+            messageProcess.processColor(messageProcess.getCommandMsg("ping").ping)
+        ]}).then((replyMsg)=>{
+            const ping = replyMsg.createdTimestamp - msg.createdTimestamp;
+            const apiPing = Math.round(Bot.ws.ping);
+            replyMsg.edit({embeds:[
+                messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("ping").pong, {ping, apiPing}))
+            ]});
         });
     }
 };
