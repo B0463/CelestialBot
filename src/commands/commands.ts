@@ -1,6 +1,7 @@
 import { Message } from "discord.js";
 import MAIN from "./MAIN";
 import help from "./help";
+import ping from "./ping";
 
 const config = require("../../config/bot.json");
 
@@ -19,6 +20,9 @@ function init(msg: Message, Bot): number {
     if(msg.guildId != config.guildId) return 1;
     if(!verifyUserPrefix(msg)) return 1;
     switch(msg.content.split(" ")[0]) {
+        case(config.prefix+"ping"):
+            ping.exec(msg, Bot);
+            break;
         case(config.prefix+"help"):
             help.exec(msg);
             break;

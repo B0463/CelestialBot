@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const MAIN_1 = __importDefault(require("./MAIN"));
 const help_1 = __importDefault(require("./help"));
+const ping_1 = __importDefault(require("./ping"));
 const config = require("../../config/bot.json");
 function verifyUserPrefix(msg) {
     const userCom = msg.content.split(" ")[0];
@@ -28,6 +29,9 @@ function init(msg, Bot) {
     if (!verifyUserPrefix(msg))
         return 1;
     switch (msg.content.split(" ")[0]) {
+        case (config.prefix + "ping"):
+            ping_1.default.exec(msg, Bot);
+            break;
         case (config.prefix + "help"):
             help_1.default.exec(msg);
             break;
