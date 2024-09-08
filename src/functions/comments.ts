@@ -1,11 +1,34 @@
-import { APIEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
 import fs from "fs";
 import path from "path";
 
 export type cmtResponse = {
     status: number;
-    content: object;
+    content: {
+        admin?: boolean;
+        [key: string]: any;
+    };
 };
+
+function rowChcmt(cmtname: string, file: string): cmtResponse {
+    const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
+    let res: cmtResponse = {
+        status: 0,
+        content: {}
+    };
+    if(!fs.existsSync(filepath)) {
+        res.status = -1;
+        return res;
+    }
+    try {
+        fs.writeFileSync(filepath, file, 'utf8');
+        res.status = 0;
+        return res;
+    } catch (e) {
+        res.status = -2;
+        return res;
+    }
+}
 
 function getCmt(cmtname: string): cmtResponse {
     const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
@@ -35,6 +58,7 @@ function createCmt(cmtname: string): number {
     const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
     if(fs.existsSync(filepath)) return -1;
     let initialContent = {
+        admin: false,
         color: "ff0000",
         title: cmtname
     }
@@ -49,5 +73,6 @@ function createCmt(cmtname: string): number {
 export default {
     createCmt,
     deleteCmt,
-    getCmt
+    getCmt,
+    rowChcmt
 };

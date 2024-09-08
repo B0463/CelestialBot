@@ -7,6 +7,7 @@ const commandMsgs = {
     mkmsg: require("../../messages/commands/mkmsg.json"),
     delmsg: require("../../messages/commands/delmsg.json"),
     sdmsg: require("../../messages/commands/sdmsg.json"),
+    rowchmsg: require("../../messages/commands/rowchmsg.json"),
 };
 function processPlaceholders(obj, data) {
     if (typeof obj === 'string') {

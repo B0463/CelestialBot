@@ -5,6 +5,7 @@ import ping from "./ping";
 import mkmsg from "./mkmsg";
 import delmsg from "./delmsg";
 import sdmsg from "./sdmsg";
+import rowchmsg from "./rowchmsg";
 
 const config = require("../../config/bot.json");
 
@@ -37,6 +38,9 @@ function init(msg: Message, Bot): number {
             break;
         case(config.prefix+"sdmsg"):
             sdmsg.exec(msg);
+            break;
+        case(config.prefix+"rowchmsg"):
+            rowchmsg.exec(msg);
             break;
         default:
             MAIN.exec(msg);

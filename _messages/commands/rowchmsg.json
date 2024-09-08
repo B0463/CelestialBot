@@ -1,0 +1,57 @@
+{
+    "noPermission": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "You can't use this command"
+    },
+    "nameCountErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Wrong arguments, use `rowchmsg msgname`"
+    },
+    "nameMatchErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Invalid name, use just a-A, 0-9, - & _ chars"
+    },
+    "filesCountErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Invalid file count, attach a json file to this command"
+    },
+    "acessFileErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Can't access this file"
+    },
+    "jsonFileErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Invalid file, use a **json** file"
+    },
+    "processFileErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Error processing file"
+    },
+    "nameExistErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "{{cmtname}} already exist"
+    },
+    "fileErr": {
+        "color": "ff0000",
+        "title": "rowchmsg",
+        "description": "Can't create {{cmtname}} command"
+    },
+    "cmtProperties": {
+        "color": "00ff00",
+        "title": "rowchmsg",
+        "description": "The properties content is:\n```json\n{{properties}}```"
+    },
+    "ok": {
+        "color": "00ff00",
+        "title": "rowchmsg",
+        "description": "{{cmtname}} successfully changed"
+    }
+}

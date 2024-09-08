@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
 const comments_1 = __importDefault(require("../functions/comments"));
+const main_1 = __importDefault(require("../main"));
 exports.default = {
     exec(msg) {
         let msgsplit = msg.content.split(" ");
@@ -23,6 +24,18 @@ exports.default = {
                 msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("sdmsg").nameNotExistErr, { cmtname }))] });
                 break;
             default:
+                if (cmt.content.admin) {
+                    let hasBypass = 0;
+                    for (let i = 0; i < main_1.default.config.bypassRolesId.length; i++) {
+                        if (msg.member.roles.cache.has(main_1.default.config.bypassRolesId[i]))
+                            hasBypass = 1;
+                    }
+                    if (!hasBypass) {
+                        msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").noPermission)] });
+                        return;
+                    }
+                }
+                delete cmt.content.admin;
                 msg.reply({ embeds: [messageProcess_1.default.processColor(cmt.content)] });
         }
     }

@@ -2,6 +2,7 @@ import { APIEmbed, Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
 import comments from "../functions/comments";
 import { cmtResponse } from "../functions/comments";
+import main from "../main";
 
 export default {
     exec(msg: Message) {
@@ -21,6 +22,17 @@ export default {
                 msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("sdmsg").nameNotExistErr, {cmtname}))]});
                 break;
             default:
+                if(cmt.content.admin) {
+                    let hasBypass = 0;
+                    for(let i=0;i<main.config.bypassRolesId.length;i++) {
+                        if(msg.member.roles.cache.has(main.config.bypassRolesId[i])) hasBypass = 1;
+                    }
+                    if(!hasBypass) {
+                        msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").noPermission)]});
+                        return;
+                    }
+                }
+                delete cmt.content.admin;
                 msg.reply({embeds:[messageProcess.processColor(cmt.content)]});
         }
     }

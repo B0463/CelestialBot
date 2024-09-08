@@ -20,7 +20,7 @@
         "description": "{{cmtname}} not exist."
     },
     "ok": {
-        "color": "ff0000",
+        "color": "00ff00",
         "title": "delmsg",
         "description": "{{cmtname}} successfully deleted"
     }

@@ -2,7 +2,8 @@
   "dependencies": {
     "better-sqlite3": "^11.1.2",
     "discord.js": "^14.15.3",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "sync-request": "^6.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.3.0",
