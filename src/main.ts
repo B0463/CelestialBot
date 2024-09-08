@@ -44,3 +44,7 @@ Bot.on("error", (error) => {
 process.on('uncaughtException', (error: Error) => {
     FarbeLog.error.withHour("process", `${error.name}:\x1b[0m ${error.message}`);
 });
+
+export default {
+    config
+};

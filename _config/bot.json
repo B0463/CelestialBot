@@ -1,5 +1,8 @@
 {
     "token": "YOUR_TOKEN_HERE",
     "prefix": "c$",
-    "guildId": "server_id"
+    "guildId": "server_id",
+    "bypassRolesId": [
+        "admin_role_id"
+    ]
 }
