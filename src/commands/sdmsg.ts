@@ -32,8 +32,17 @@ export default {
                         return;
                     }
                 }
-                delete cmt.content.admin;
-                msg.reply({embeds:[messageProcess.processColor(cmt.content)]});
+                if(cmt.content.reply) {
+                    msg.reply({
+                        content: cmt.content.content,
+                        embeds: cmt.content.embeds.map(embed => messageProcess.processColor(embed))
+                    });
+                    return;
+                }
+                msg.channel.send({
+                    content: cmt.content.content,
+                    embeds: cmt.content.embeds.map(embed => messageProcess.processColor(embed))
+                });
         }
     }
 };

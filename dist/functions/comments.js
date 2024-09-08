@@ -53,9 +53,14 @@ function createCmt(cmtname) {
     if (fs_1.default.existsSync(filepath))
         return -1;
     let initialContent = {
-        admin: false,
-        color: "ff0000",
-        title: cmtname
+        admin: true,
+        reply: true,
+        embeds: [
+            {
+                color: "ff0000",
+                title: cmtname
+            }
+        ]
     };
     try {
         fs_1.default.writeFileSync(filepath, JSON.stringify(initialContent, null, 4), 'utf8');

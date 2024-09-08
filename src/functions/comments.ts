@@ -1,13 +1,21 @@
-import { Message } from "discord.js";
+import { APIEmbed, Message } from "discord.js";
 import fs from "fs";
 import path from "path";
 
+export type CMTEmbed = Omit<APIEmbed, 'color'> & {
+    color?: string | number;
+};
+
+export type cmtProperties = {
+    admin?: boolean;
+    reply?: boolean;
+    content?: string;
+    embeds?: CMTEmbed[];
+};
+
 export type cmtResponse = {
     status: number;
-    content: {
-        admin?: boolean;
-        [key: string]: any;
-    };
+    content: cmtProperties;
 };
 
 function rowChcmt(cmtname: string, file: string): cmtResponse {
@@ -57,10 +65,15 @@ function deleteCmt(cmtname: string): number {
 function createCmt(cmtname: string): number {
     const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
     if(fs.existsSync(filepath)) return -1;
-    let initialContent = {
-        admin: false,
-        color: "ff0000",
-        title: cmtname
+    let initialContent: cmtProperties = {
+        admin: true,
+        reply: true,
+        embeds: [
+            {
+                color: "ff0000",
+                title: cmtname
+            }
+        ]
     }
     try {
         fs.writeFileSync(filepath, JSON.stringify(initialContent, null, 4), 'utf8');
