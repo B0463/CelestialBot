@@ -2,6 +2,14 @@ import { APIEmbed, Message } from "discord.js";
 import fs from "fs";
 import path from "path";
 
+function deleteCmt(cmtname: string): number {
+    const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
+    if(fs.existsSync(filepath)) {
+        fs.unlinkSync(filepath);
+        return 0;
+    }
+    else return -1;
+}
 
 function createCmt(cmtname: string): number {
     const filepath = path.join(__dirname, '../../messages/comments', `${cmtname}.json`);
@@ -19,5 +27,6 @@ function createCmt(cmtname: string): number {
 }
 
 export default {
-    createCmt
+    createCmt,
+    deleteCmt
 };

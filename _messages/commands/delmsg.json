@@ -1,0 +1,27 @@
+{
+    "noPermission": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "You can't use this command"
+    },
+    "nameCountErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "Wrong arguments, use `delmsg msgname`"
+    },
+    "nameMatchErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "Invalid name, use just a-A, 0-9, - & _ chars"
+    },
+    "nameNotExistErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "{{cmtname}} not exist."
+    },
+    "ok": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "{{cmtname}} successfully deleted"
+    }
+}

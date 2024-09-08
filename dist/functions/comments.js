@@ -5,6 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+function deleteCmt(cmtname) {
+    const filepath = path_1.default.join(__dirname, '../../messages/comments', `${cmtname}.json`);
+    if (fs_1.default.existsSync(filepath)) {
+        fs_1.default.unlinkSync(filepath);
+        return 0;
+    }
+    else
+        return -1;
+}
 function createCmt(cmtname) {
     const filepath = path_1.default.join(__dirname, '../../messages/comments', `${cmtname}.json`);
     if (fs_1.default.existsSync(filepath))
@@ -22,5 +31,6 @@ function createCmt(cmtname) {
     }
 }
 exports.default = {
-    createCmt
+    createCmt,
+    deleteCmt
 };

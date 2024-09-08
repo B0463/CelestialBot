@@ -2,7 +2,8 @@ import { Message } from "discord.js";
 import MAIN from "./MAIN";
 import help from "./help";
 import ping from "./ping";
-import mkmsg from "./mkmsg"
+import mkmsg from "./mkmsg";
+import delmsg from "./delmsg";
 
 const config = require("../../config/bot.json");
 
@@ -29,6 +30,9 @@ function init(msg: Message, Bot): number {
             break;
         case(config.prefix+"mkmsg"):
             mkmsg.exec(msg);
+            break;
+        case(config.prefix+"delmsg"):
+            delmsg.exec(msg);
             break;
         default:
             MAIN.exec(msg);

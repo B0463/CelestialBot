@@ -1,0 +1,32 @@
+{
+    "noPermission": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "You can't use this command"
+    },
+    "nameCountErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "Wrong arguments, use `mkmsg msgname`"
+    },
+    "nameMatchErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "Invalid name, use just a-A, 0-9, - & _ chars"
+    },
+    "nameExistErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "{{cmtname}} already exist"
+    },
+    "fileErr": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "Can't create {{cmtname}} command"
+    },
+    "ok": {
+        "color": "ff0000",
+        "title": "mkmsg",
+        "description": "{{cmtname}} successfully created"
+    }
+}
