@@ -6,6 +6,7 @@ const commandMsgs = {
     ping: require("../../messages/commands/ping.json"),
     mkmsg: require("../../messages/commands/mkmsg.json"),
     delmsg: require("../../messages/commands/delmsg.json"),
+    sdmsg: require("../../messages/commands/sdmsg.json"),
 };
 function processPlaceholders(obj, data) {
     if (typeof obj === 'string') {

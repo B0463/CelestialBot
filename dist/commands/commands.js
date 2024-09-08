@@ -8,6 +8,7 @@ const help_1 = __importDefault(require("./help"));
 const ping_1 = __importDefault(require("./ping"));
 const mkmsg_1 = __importDefault(require("./mkmsg"));
 const delmsg_1 = __importDefault(require("./delmsg"));
+const sdmsg_1 = __importDefault(require("./sdmsg"));
 const config = require("../../config/bot.json");
 function verifyUserPrefix(msg) {
     const userCom = msg.content.split(" ")[0];
@@ -42,6 +43,9 @@ function init(msg, Bot) {
             break;
         case (config.prefix + "delmsg"):
             delmsg_1.default.exec(msg);
+            break;
+        case (config.prefix + "sdmsg"):
+            sdmsg_1.default.exec(msg);
             break;
         default:
             MAIN_1.default.exec(msg);

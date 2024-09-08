@@ -5,6 +5,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+function getCmt(cmtname) {
+    const filepath = path_1.default.join(__dirname, '../../messages/comments', `${cmtname}.json`);
+    let res = {
+        status: 0,
+        content: {}
+    };
+    if (!fs_1.default.existsSync(filepath)) {
+        res.status = -1;
+        return res;
+    }
+    res.content = JSON.parse(fs_1.default.readFileSync(filepath, 'utf8').toString());
+    res.status = 0;
+    return res;
+}
 function deleteCmt(cmtname) {
     const filepath = path_1.default.join(__dirname, '../../messages/comments', `${cmtname}.json`);
     if (fs_1.default.existsSync(filepath)) {
@@ -32,5 +46,6 @@ function createCmt(cmtname) {
 }
 exports.default = {
     createCmt,
-    deleteCmt
+    deleteCmt,
+    getCmt
 };

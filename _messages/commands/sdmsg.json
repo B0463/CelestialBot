@@ -1,0 +1,17 @@
+{
+    "nameCountErr": {
+        "color": "ff0000",
+        "title": "sdmsg",
+        "description": "Wrong arguments, use `sdmsg msgname`"
+    },
+    "nameMatchErr": {
+        "color": "ff0000",
+        "title": "sdmsg",
+        "description": "Invalid name, use just a-A, 0-9, - & _ chars"
+    },
+    "nameNotExistErr": {
+        "color": "ff0000",
+        "title": "sdmsg",
+        "description": "{{cmtname}} not exist."
+    }
+}
