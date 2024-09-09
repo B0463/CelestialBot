@@ -1,10 +1,11 @@
 import { APIEmbed, Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
+import main from "../main";
 
 export default {
     exec(msg: Message) {
         msg.reply({embeds:[
-            messageProcess.processColor(messageProcess.getCommandMsg("MAIN"))
+            messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("MAIN"), {prefix: main.config.prefix}))
         ]});
     }
 };

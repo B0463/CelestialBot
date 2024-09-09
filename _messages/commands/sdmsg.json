@@ -1,4 +1,9 @@
 {
+    "noPermission": {
+        "color": "ff0000",
+        "title": "delmsg",
+        "description": "You can't use this command"
+    },
     "nameCountErr": {
         "color": "ff0000",
         "title": "sdmsg",

@@ -1,5 +1,5 @@
 {
     "color": "ff0000",
     "title": "Help",
-    "description": "Help message"
+    "description": "Aqui está os comandos do bot:\n\n- `{{prefix}}any` - qualquer comando não listado ele mostra a mensagem padrão.\n- `{{prefix}}help` - exibe esta menssagem.\n- `{{prefix}}ping` - mostra o ping do bot.\n- `{{prefix}}sdmsg msgname` - send message, manda uma mensagem personalizada.\n- `{{prefix}}mkmsg msgname` - ADM, make message, cria uma mensagem personalizada.\n- `{{prefix}}delmsg msgname` - ADM, delete message, deleta uma mensagem personalizada.\n- `{{prefix}}rowchmsg msgname <file>` - ADM, row change message, ve as propiedades de uma mensagem personalizada, ou, se tiver um arquivo anexado, modifica as propiedades."
 }
