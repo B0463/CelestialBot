@@ -10,14 +10,15 @@ const mkmsg_1 = __importDefault(require("./mkmsg"));
 const delmsg_1 = __importDefault(require("./delmsg"));
 const sdmsg_1 = __importDefault(require("./sdmsg"));
 const rowchmsg_1 = __importDefault(require("./rowchmsg"));
-const config = require("../../config/bot.json");
+const main_1 = __importDefault(require("../main"));
+const prefix = main_1.default.config.prefix;
 function verifyUserPrefix(msg) {
     const userCom = msg.content.split(" ")[0];
-    const prefixLen = config.prefix.length;
+    const prefixLen = prefix.length;
     if (userCom.length < prefixLen)
         return false;
     const userPrefix = userCom.substring(0, prefixLen);
-    if (userPrefix == config.prefix) {
+    if (userPrefix == prefix) {
         return true;
     }
     else
@@ -28,27 +29,27 @@ function init(msg, Bot) {
         return 1;
     if (!msg.guild)
         return 1;
-    if (msg.guildId != config.guildId)
+    if (msg.guildId != main_1.default.config.guildId)
         return 1;
     if (!verifyUserPrefix(msg))
         return 1;
     switch (msg.content.split(" ")[0]) {
-        case (config.prefix + "ping"):
+        case (prefix + "ping"):
             ping_1.default.exec(msg, Bot);
             break;
-        case (config.prefix + "help"):
+        case (prefix + "help"):
             help_1.default.exec(msg);
             break;
-        case (config.prefix + "mkmsg"):
+        case (prefix + "mkmsg"):
             mkmsg_1.default.exec(msg);
             break;
-        case (config.prefix + "delmsg"):
+        case (prefix + "delmsg"):
             delmsg_1.default.exec(msg);
             break;
-        case (config.prefix + "sdmsg"):
+        case (prefix + "sdmsg"):
             sdmsg_1.default.exec(msg);
             break;
-        case (config.prefix + "rowchmsg"):
+        case (prefix + "rowchmsg"):
             rowchmsg_1.default.exec(msg);
             break;
         default:

@@ -6,40 +6,41 @@ import mkmsg from "./mkmsg";
 import delmsg from "./delmsg";
 import sdmsg from "./sdmsg";
 import rowchmsg from "./rowchmsg";
+import main from "../main";
 
-const config = require("../../config/bot.json");
+const prefix = main.config.prefix;
 
 function verifyUserPrefix(msg: Message): boolean {
     const userCom = msg.content.split(" ")[0];
-    const prefixLen = config.prefix.length;
+    const prefixLen = prefix.length;
     if(userCom.length < prefixLen) return false;
     const userPrefix = userCom.substring(0, prefixLen);
-    if(userPrefix == config.prefix) {
+    if(userPrefix == prefix) {
         return true;
     } else return false;
 }
 function init(msg: Message, Bot): number {
     if(msg.author.bot) return 1;
     if(!msg.guild) return 1;
-    if(msg.guildId != config.guildId) return 1;
+    if(msg.guildId != main.config.guildId) return 1;
     if(!verifyUserPrefix(msg)) return 1;
     switch(msg.content.split(" ")[0]) {
-        case(config.prefix+"ping"):
+        case(prefix+"ping"):
             ping.exec(msg, Bot);
             break;
-        case(config.prefix+"help"):
+        case(prefix+"help"):
             help.exec(msg);
             break;
-        case(config.prefix+"mkmsg"):
+        case(prefix+"mkmsg"):
             mkmsg.exec(msg);
             break;
-        case(config.prefix+"delmsg"):
+        case(prefix+"delmsg"):
             delmsg.exec(msg);
             break;
-        case(config.prefix+"sdmsg"):
+        case(prefix+"sdmsg"):
             sdmsg.exec(msg);
             break;
-        case(config.prefix+"rowchmsg"):
+        case(prefix+"rowchmsg"):
             rowchmsg.exec(msg);
             break;
         default:
