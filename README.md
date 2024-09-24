@@ -4,6 +4,7 @@
 
 Use the command `npm install --production` to install dependencies.
 Remove the underscore of `_config` and `_messages` directories, and change the `config/bot.json` file.
+Use the command `chmod +x run.sh` to add execution permission to file `run.sh`.
 Run bot with `./run.sh`.
 
 - You can see last logs in `botlog.log` file
