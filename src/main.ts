@@ -35,7 +35,7 @@ Bot.on('ready', () => {
 
 database.inicialize();
 
-Bot.on('messageCreate', (msg) => {
+Bot.on('messageCreate', async (msg) => {
     commands.init(msg, Bot);
 });
 Bot.on("error", (error) => {
