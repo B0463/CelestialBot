@@ -6,9 +6,9 @@ import mkmsg from "./mkmsg";
 import delmsg from "./delmsg";
 import sdmsg from "./sdmsg";
 import rowchmsg from "./rowchmsg";
-import main from "../main";
+import { config } from "../main";
 
-const prefix = main.config.prefix;
+const prefix = config.prefix;
 
 function verifyUserPrefix(msg: Message): boolean {
     const userCom = msg.content.split(" ")[0];
@@ -22,7 +22,7 @@ function verifyUserPrefix(msg: Message): boolean {
 function init(msg: Message, Bot): number {
     if(msg.author.bot) return 1;
     if(!msg.guild) return 1;
-    if(msg.guildId != main.config.guildId) return 1;
+    if(msg.guildId != config.guildId) return 1;
     if(!verifyUserPrefix(msg)) return 1;
     switch(msg.content.split(" ")[0]) {
         case(prefix+"ping"):

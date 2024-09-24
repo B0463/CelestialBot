@@ -12,11 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.config = void 0;
 const FarbeLog_1 = __importDefault(require("./functions/FarbeLog"));
-const commands_1 = __importDefault(require("./commands/commands"));
 const discord_js_1 = require("discord.js");
 const database_1 = __importDefault(require("./functions/database"));
 const config = require("../config/bot.json");
+exports.config = config;
+const commands_1 = __importDefault(require("./commands/commands"));
 const Bot = new discord_js_1.Client({
     intents: [
         discord_js_1.GatewayIntentBits.Guilds,

@@ -10,8 +10,8 @@ const mkmsg_1 = __importDefault(require("./mkmsg"));
 const delmsg_1 = __importDefault(require("./delmsg"));
 const sdmsg_1 = __importDefault(require("./sdmsg"));
 const rowchmsg_1 = __importDefault(require("./rowchmsg"));
-const main_1 = __importDefault(require("../main"));
-const prefix = main_1.default.config.prefix;
+const main_1 = require("../main");
+const prefix = main_1.config.prefix;
 function verifyUserPrefix(msg) {
     const userCom = msg.content.split(" ")[0];
     const prefixLen = prefix.length;
@@ -29,7 +29,7 @@ function init(msg, Bot) {
         return 1;
     if (!msg.guild)
         return 1;
-    if (msg.guildId != main_1.default.config.guildId)
+    if (msg.guildId != main_1.config.guildId)
         return 1;
     if (!verifyUserPrefix(msg))
         return 1;

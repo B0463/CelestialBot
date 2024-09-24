@@ -1,9 +1,10 @@
 import FarbeLog from "./functions/FarbeLog";
-import commands from "./commands/commands";
 import { Client, GatewayIntentBits, GatewayDispatchEvents, Message } from 'discord.js';
 import database from "./functions/database";
 
 const config = require("../config/bot.json");
+
+import commands from "./commands/commands";
 
 const Bot = new Client({
     intents: [
@@ -44,6 +45,8 @@ Bot.on("error", (error) => {
 process.on('uncaughtException', (error: Error) => {
     FarbeLog.error.withHour("process", `${error.name}:\x1b[0m ${error.message}`);
 });
+
+export { config }
 
 export default {
     config
