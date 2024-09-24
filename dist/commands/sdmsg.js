@@ -10,18 +10,18 @@ exports.default = {
     exec(msg) {
         let msgsplit = msg.content.split(" ");
         if (msgsplit.length > 2 || msgsplit.length == 1) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("sdmsg").nameCountErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameCountErr")] });
             return;
         }
         let cmtname = msg.content.substring(msgsplit[0].length + 1);
         if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("sdmsg").nameMatchErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameMatchErr")] });
             return;
         }
         let cmt = comments_1.default.getCmt(cmtname);
         switch (cmt.status) {
             case -1:
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("sdmsg").nameNotExistErr, { cmtname }))] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameNotExistErr", { cmtname })] });
                 break;
             default:
                 if (cmt.content.admin) {
@@ -31,7 +31,7 @@ exports.default = {
                             hasBypass = 1;
                     }
                     if (!hasBypass) {
-                        msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").noPermission)] });
+                        msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
                         return;
                     }
                 }

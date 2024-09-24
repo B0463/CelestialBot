@@ -39,8 +39,14 @@ function getCommandMsg(command) {
     return commandMsgs[command];
 }
 
+function getFull(command: string, sub?: string, data?: any) {
+    if(sub) return processColor(processPlaceholders(getCommandMsg(command)[sub], data));
+    return processColor(processPlaceholders(getCommandMsg(command), data));
+}
+
 export default {
     getCommandMsg,
     processPlaceholders,
-    processColor
+    processColor,
+    getFull
 };

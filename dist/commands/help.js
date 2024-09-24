@@ -8,7 +8,7 @@ const main_1 = __importDefault(require("../main"));
 exports.default = {
     exec(msg) {
         msg.reply({ embeds: [
-                messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("help"), { prefix: main_1.default.config.prefix }))
+                messageProcess_1.default.getFull("help", undefined, { prefix: main_1.default.config.prefix })
             ] });
     }
 };

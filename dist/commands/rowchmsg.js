@@ -15,29 +15,29 @@ exports.default = {
                 hasBypass = 1;
         }
         if (!hasBypass) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").noPermission)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
             return;
         }
         let msgsplit = msg.content.split(" ");
         if (msgsplit.length > 2 || msgsplit.length == 1) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").nameCountErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameCountErr")] });
             return;
         }
         let cmtname = msg.content.substring(msgsplit[0].length + 1);
         if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").nameMatchErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameMatchErr")] });
             return;
         }
         if (msg.attachments.size !== 1) {
             let cmt = comments_1.default.getCmt(cmtname);
             switch (cmt.status) {
                 case -1:
-                    msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("rowchmsg").nameExistErr, { cmtname }))] });
+                    msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameExistErr", { cmtname })] });
                     break;
                 default:
-                    msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("rowchmsg").cmtProperties, {
+                    msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "cmtProperties", {
                                 properties: JSON.stringify(cmt.content, null, 4)
-                            }))] });
+                            })] });
             }
             return;
         }
@@ -46,7 +46,7 @@ exports.default = {
         try {
             const response = (0, sync_request_1.default)('GET', attachment.url);
             if (response.statusCode !== 200) {
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").acessFileErr)] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "acessFileErr")] });
                 return;
             }
             const buffer = response.getBody();
@@ -55,24 +55,24 @@ exports.default = {
                 const jsonObject = JSON.parse(file);
             }
             catch (e) {
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").jsonFileErr)] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "jsonFileErr")] });
                 return;
             }
         }
         catch (e) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("rowchmsg").processFileErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "processFileErr")] });
             return;
         }
         let cmt = comments_1.default.rowChcmt(cmtname, file);
         switch (cmt.status) {
             case -1:
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("rowchmsg").nameExistErr, { cmtname }))] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameExistErr", { cmtname })] });
                 break;
             case -2:
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("rowchmsg").fileErr, { cmtname }))] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "fileErr", { cmtname })] });
                 break;
             default:
-                msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("rowchmsg").ok, { cmtname }))] });
+                msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "ok", { cmtname })] });
         }
     }
 };

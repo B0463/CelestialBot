@@ -7,12 +7,12 @@ const messageProcess_1 = __importDefault(require("../functions/messageProcess"))
 exports.default = {
     exec(msg, Bot) {
         msg.reply({ embeds: [
-                messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("ping").ping)
+                messageProcess_1.default.getFull("ping", "ping")
             ] }).then((replyMsg) => {
             const ping = replyMsg.createdTimestamp - msg.createdTimestamp;
             const apiPing = Math.round(Bot.ws.ping);
             replyMsg.edit({ embeds: [
-                    messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("ping").pong, { ping, apiPing }))
+                    messageProcess_1.default.getFull("ping", "pong", { ping, apiPing })
                 ] });
         });
     }

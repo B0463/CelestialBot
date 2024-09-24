@@ -12,29 +12,29 @@ export default {
             if(msg.member.roles.cache.has(main.config.bypassRolesId[i])) hasBypass = 1;
         }
         if(!hasBypass) {
-            msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").noPermission)]});
+            msg.reply({embeds:[messageProcess.getFull("rowchmsg", "noPermission")]});
             return;
         }
         let msgsplit = msg.content.split(" ");
         if(msgsplit.length > 2 || msgsplit.length == 1) {
-            msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").nameCountErr)]});
+            msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameCountErr")]});
             return;
         }
         let cmtname = msg.content.substring(msgsplit[0].length+1);
         if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-            msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").nameMatchErr)]});
+            msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameMatchErr")]});
             return;
         }
         if(msg.attachments.size !== 1) {
             let cmt: cmtResponse = comments.getCmt(cmtname);
             switch(cmt.status) {
                 case -1:
-                    msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("rowchmsg").nameExistErr, {cmtname}))]});
+                    msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameExistErr", {cmtname})]});
                     break;
                 default:
-                    msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("rowchmsg").cmtProperties, {
+                    msg.reply({embeds:[messageProcess.getFull("rowchmsg", "cmtProperties", {
                         properties: JSON.stringify(cmt.content, null, 4)
-                    }))]});
+                    })]});
             }
             return;
         }
@@ -45,7 +45,7 @@ export default {
         try {
             const response = request('GET', attachment!.url);
             if(response.statusCode !== 200) {
-                msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").acessFileErr)]});
+                msg.reply({embeds:[messageProcess.getFull("rowchmsg", "acessFileErr")]});
                 return;
             }
             const buffer = response.getBody();
@@ -53,25 +53,25 @@ export default {
             try {
                 const jsonObject = JSON.parse(file);
             } catch (e) {
-                msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").jsonFileErr)]});
+                msg.reply({embeds:[messageProcess.getFull("rowchmsg", "jsonFileErr")]});
                 return;
             }
     
         } catch (e) {
-            msg.reply({embeds:[messageProcess.processColor(messageProcess.getCommandMsg("rowchmsg").processFileErr)]});
+            msg.reply({embeds:[messageProcess.getFull("rowchmsg", "processFileErr")]});
             return;
         }
 
         let cmt: cmtResponse = comments.rowChcmt(cmtname, file);
         switch(cmt.status) {
             case -1:
-                msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("rowchmsg").nameExistErr, {cmtname}))]});
+                msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameExistErr", {cmtname})]});
                 break;
             case -2:
-                msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("rowchmsg").fileErr, {cmtname}))]});
+                msg.reply({embeds:[messageProcess.getFull("rowchmsg", "fileErr", {cmtname})]});
                 break;
             default:
-                msg.reply({embeds:[messageProcess.processColor(messageProcess.processPlaceholders(messageProcess.getCommandMsg("rowchmsg").ok, {cmtname}))]});
+                msg.reply({embeds:[messageProcess.getFull("rowchmsg", "ok", {cmtname})]});
         }
     }
 };

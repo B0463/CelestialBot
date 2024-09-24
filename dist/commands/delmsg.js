@@ -14,24 +14,24 @@ exports.default = {
                 hasBypass = 1;
         }
         if (!hasBypass) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("delmsg").noPermission)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "noPermission")] });
             return;
         }
         let msgsplit = msg.content.split(" ");
         if (msgsplit.length > 2 || msgsplit.length == 1) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("delmsg").nameCountErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameCountErr")] });
             return;
         }
         let cmtname = msg.content.substring(msgsplit[0].length + 1);
         if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.getCommandMsg("delmsg").nameMatchErr)] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameMatchErr")] });
             return;
         }
         let cmtstatus = comments_1.default.deleteCmt(cmtname);
         if (cmtstatus != 0) {
-            msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("delmsg").nameNotExistErr, { cmtname }))] });
+            msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameNotExistErr", { cmtname })] });
             return;
         }
-        msg.reply({ embeds: [messageProcess_1.default.processColor(messageProcess_1.default.processPlaceholders(messageProcess_1.default.getCommandMsg("delmsg").ok, { cmtname }))] });
+        msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "ok", { cmtname })] });
     }
 };
