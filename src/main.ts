@@ -39,6 +39,10 @@ database.inicialize();
 Bot.on('messageCreate', async (msg) => {
     commands.init(msg, Bot);
 });
+
+Bot.on('rateLimit', (info) => {
+    FarbeLog.error.withHour("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`)
+});
 Bot.on("error", (error) => {
     FarbeLog.error.withHour("client", "error with Bot Client:\n"+error);
 });
