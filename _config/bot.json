@@ -1,6 +1,8 @@
 {
     "token": "YOUR_TOKEN_HERE",
     "prefix": "c$",
+    "logPath": "./botlog.log",
+    "UTCOffset": 0,
     "guildId": "server_id",
     "bypassRolesId": [
         "admin_role_id"

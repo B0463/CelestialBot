@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 const MAIN_1 = __importDefault(require("./MAIN"));
 const help_1 = __importDefault(require("./help"));
 const ping_1 = __importDefault(require("./ping"));
@@ -62,3 +63,4 @@ const obj = {
     init
 };
 exports.default = obj;
+FarbeLog_1.default.ok("imported", "commands.ts");

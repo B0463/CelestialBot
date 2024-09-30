@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = __importDefault(require("fs"));
 const path_1 = __importDefault(require("path"));
+const FarbeLog_1 = __importDefault(require("./FarbeLog"));
 function rowChcmt(cmtname, file) {
     const filepath = path_1.default.join(__dirname, '../../messages/comments', `${cmtname}.json`);
     let res = {
@@ -76,3 +77,4 @@ exports.default = {
     getCmt,
     rowChcmt
 };
+FarbeLog_1.default.ok("imported", "comments.ts");

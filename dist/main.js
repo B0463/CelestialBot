@@ -13,11 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
+const config = require("../config/bot.json");
+exports.config = config;
 const FarbeLog_1 = __importDefault(require("./functions/FarbeLog"));
 const discord_js_1 = require("discord.js");
 const database_1 = __importDefault(require("./functions/database"));
-const config = require("../config/bot.json");
-exports.config = config;
 const commands_1 = __importDefault(require("./commands/commands"));
 const Bot = new discord_js_1.Client({
     intents: [
@@ -45,21 +45,22 @@ const Bot = new discord_js_1.Client({
 Bot.login(config.token);
 Bot.on('ready', () => {
     var _a;
-    FarbeLog_1.default.ok.withHour("logged", (_a = Bot.user) === null || _a === void 0 ? void 0 : _a.tag);
+    FarbeLog_1.default.ok("logged", (_a = Bot.user) === null || _a === void 0 ? void 0 : _a.tag);
 });
 database_1.default.inicialize();
 Bot.on('messageCreate', (msg) => __awaiter(void 0, void 0, void 0, function* () {
     commands_1.default.init(msg, Bot);
 }));
 Bot.on('rateLimit', (info) => {
-    FarbeLog_1.default.error.withHour("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`);
+    FarbeLog_1.default.error("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`);
 });
 Bot.on("error", (error) => {
-    FarbeLog_1.default.error.withHour("client", "error with Bot Client:\n" + error);
+    FarbeLog_1.default.error("client", "error with Bot Client:\n" + error);
 });
 process.on('uncaughtException', (error) => {
-    FarbeLog_1.default.error.withHour("process", `${error.name}:\x1b[0m ${error.message}`);
+    FarbeLog_1.default.error("process", `${error.name}:\x1b[0m ${error.message}`);
 });
 exports.default = {
     config
 };
+FarbeLog_1.default.ok("loaded", "main.ts");

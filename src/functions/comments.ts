@@ -1,6 +1,7 @@
-import { APIEmbed, Message } from "discord.js";
+import { APIEmbed } from "discord.js";
 import fs from "fs";
 import path from "path";
+import FarbeLog from "./FarbeLog";
 
 export type CMTEmbed = Omit<APIEmbed, 'color'> & {
     color?: string | number;
@@ -89,3 +90,5 @@ export default {
     getCmt,
     rowChcmt
 };
+
+FarbeLog.ok("imported", "comments.ts");

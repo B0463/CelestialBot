@@ -14,8 +14,9 @@ function inicialize() {
           discriminator TEXT
         )
     `);
-    FarbeLog_1.default.ok.withHour("started", "database");
+    FarbeLog_1.default.ok("started", "database");
 }
 exports.default = {
     inicialize
 };
+FarbeLog_1.default.ok("imported", "database.ts");

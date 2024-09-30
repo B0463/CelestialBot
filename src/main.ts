@@ -1,10 +1,17 @@
+const config: Config = require("../config/bot.json");
 import FarbeLog from "./functions/FarbeLog";
-import { Client, GatewayIntentBits, GatewayDispatchEvents, Message } from 'discord.js';
+import { Client, GatewayIntentBits } from 'discord.js';
 import database from "./functions/database";
-
-const config = require("../config/bot.json");
-
 import commands from "./commands/commands";
+
+type Config = {
+    token: string;
+    prefix: string;
+    logPath: string;
+    UTCOffset: number;
+    guildId: string;
+    bypassRolesId: string[];
+};
 
 const Bot = new Client({
     intents: [
@@ -31,7 +38,7 @@ const Bot = new Client({
 });
 Bot.login(config.token);
 Bot.on('ready', () => {
-    FarbeLog.ok.withHour("logged", Bot.user?.tag);
+    FarbeLog.ok("logged", Bot.user?.tag);
 });
 
 database.inicialize();
@@ -41,13 +48,13 @@ Bot.on('messageCreate', async (msg) => {
 });
 
 Bot.on('rateLimit', (info) => {
-    FarbeLog.error.withHour("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`)
+    FarbeLog.error("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`)
 });
 Bot.on("error", (error) => {
-    FarbeLog.error.withHour("client", "error with Bot Client:\n"+error);
+    FarbeLog.error("client", "error with Bot Client:\n"+error);
 });
 process.on('uncaughtException', (error: Error) => {
-    FarbeLog.error.withHour("process", `${error.name}:\x1b[0m ${error.message}`);
+    FarbeLog.error("process", `${error.name}:\x1b[0m ${error.message}`);
 });
 
 export { config }
@@ -55,3 +62,5 @@ export { config }
 export default {
     config
 };
+
+FarbeLog.ok("loaded", "main.ts");

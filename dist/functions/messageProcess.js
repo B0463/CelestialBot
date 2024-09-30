@@ -1,5 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const FarbeLog_1 = __importDefault(require("./FarbeLog"));
 const commandMsgs = {
     MAIN: require("../../messages/commands/MAIN.json"),
     help: require("../../messages/commands/help.json"),
@@ -46,3 +50,4 @@ exports.default = {
     processColor,
     getFull
 };
+FarbeLog_1.default.ok("imported", "messageProcess.ts");

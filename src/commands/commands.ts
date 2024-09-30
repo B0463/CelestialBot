@@ -1,4 +1,5 @@
 import { Message } from "discord.js";
+import FarbeLog from "../functions/FarbeLog";
 import MAIN from "./MAIN";
 import help from "./help";
 import ping from "./ping";
@@ -53,3 +54,5 @@ const obj = {
     init
 }
 export default obj;
+
+FarbeLog.ok("imported", "commands.ts");

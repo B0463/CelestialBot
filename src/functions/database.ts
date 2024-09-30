@@ -1,4 +1,3 @@
-import { APIEmbed, Message } from "discord.js";
 import Database from "better-sqlite3";
 import FarbeLog from "./FarbeLog";
 
@@ -12,9 +11,10 @@ function inicialize() {
           discriminator TEXT
         )
     `);
-    FarbeLog.ok.withHour("started", "database");
+    FarbeLog.ok("started", "database");
 }
 
 export default {
     inicialize
 };
+FarbeLog.ok("imported", "database.ts");

@@ -1,4 +1,4 @@
-import { APIEmbed, Message } from "discord.js";
+import { Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
 import comments from "../functions/comments";
 import main from "../main";

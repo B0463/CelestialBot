@@ -1,4 +1,4 @@
-import { APIEmbed, Message } from "discord.js";
+import FarbeLog from "./FarbeLog";
 
 const commandMsgs = {
     MAIN: require("../../messages/commands/MAIN.json"),
@@ -8,7 +8,7 @@ const commandMsgs = {
     delmsg: require("../../messages/commands/delmsg.json"),
     sdmsg: require("../../messages/commands/sdmsg.json"),
     rowchmsg: require("../../messages/commands/rowchmsg.json"),
-} 
+}
 
 function processPlaceholders(obj, data) {
     if(typeof obj === 'string') {
@@ -50,3 +50,5 @@ export default {
     processColor,
     getFull
 };
+
+FarbeLog.ok("imported", "messageProcess.ts");
