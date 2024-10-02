@@ -14,10 +14,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
 const main_1 = require("../main");
+const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 exports.default = {
     exec(msg) {
         (() => __awaiter(this, void 0, void 0, function* () {
-            yield msg.reply({ embeds: [messageProcess_1.default.getFull("help", undefined, { prefix: main_1.config.prefix })] });
+            try {
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("help", undefined, { prefix: main_1.config.prefix })] });
+            }
+            catch (e) {
+                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+            }
         }))();
     }
 };
