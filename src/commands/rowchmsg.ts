@@ -13,7 +13,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "noPermission")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -22,7 +22,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameCountErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -31,7 +31,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameMatchErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -42,7 +42,7 @@ export default {
                         try {
                             await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameExistErr", {cmtname})]});
                         } catch(e) {
-                            FarbeLog.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                         break;
                     default:
@@ -51,7 +51,7 @@ export default {
                                 properties: JSON.stringify(cmt.content, null, 4)
                             })]});
                         } catch(e) {
-                            FarbeLog.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                 }
                 return;
@@ -66,7 +66,7 @@ export default {
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "acessFileErr")]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     return;
                 }
@@ -78,7 +78,7 @@ export default {
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "jsonFileErr")]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     return;
                 }
@@ -87,7 +87,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "processFileErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -98,21 +98,21 @@ export default {
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "nameExistErr", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 case -2:
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "fileErr", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "ok", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
             }
         })();

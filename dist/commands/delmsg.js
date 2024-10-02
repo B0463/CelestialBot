@@ -24,7 +24,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "noPermission")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -34,7 +34,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameCountErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -44,7 +44,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameMatchErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -54,7 +54,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "nameNotExistErr", { cmtname })] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -62,7 +62,7 @@ exports.default = {
                 yield msg.reply({ embeds: [messageProcess_1.default.getFull("delmsg", "ok", { cmtname })] });
             }
             catch (e) {
-                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         }))();
     }

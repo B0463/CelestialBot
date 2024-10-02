@@ -22,7 +22,7 @@ exports.default = {
                 yield msg.reply({ embeds: [messageProcess_1.default.getFull("MAIN", undefined, { prefix: main_1.config.prefix })] });
             }
             catch (e) {
-                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         }))();
     }

@@ -11,7 +11,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("delmsg", "noPermission")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -20,7 +20,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("delmsg", "nameCountErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -29,7 +29,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("delmsg", "nameMatchErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -38,14 +38,14 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("delmsg", "nameNotExistErr", {cmtname})]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
             try {
                 await msg.reply({embeds:[messageProcess.getFull("delmsg", "ok", {cmtname})]});
             } catch(e) {
-                FarbeLog.error("Message", `Error sending message:\n${e}`);
+                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         })();
     }

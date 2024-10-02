@@ -9,7 +9,7 @@ export default {
             try {
                 await msg.reply({embeds:[messageProcess.getFull("MAIN", undefined, {prefix: config.prefix})]});
             } catch(e) {
-                FarbeLog.error("Message", `Error sending message:\n${e}`);
+                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         })();
     }

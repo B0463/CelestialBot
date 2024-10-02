@@ -11,7 +11,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("mkmsg", "noPermission")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -20,7 +20,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("mkmsg", "nameCountErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -29,7 +29,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("mkmsg", "nameMatchErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -39,21 +39,21 @@ export default {
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("mkmsg", "nameExistErr", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 case -2:
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("mkmsg", "fileErr", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("mkmsg", "ok", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                 }
         })();

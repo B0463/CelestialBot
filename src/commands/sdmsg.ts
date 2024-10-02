@@ -13,7 +13,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("sdmsg", "nameCountErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -22,7 +22,7 @@ export default {
                 try {
                     await msg.reply({embeds:[messageProcess.getFull("sdmsg", "nameMatchErr")]});
                 } catch(e) {
-                    FarbeLog.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -32,7 +32,7 @@ export default {
                     try {
                         await msg.reply({embeds:[messageProcess.getFull("sdmsg", "nameNotExistErr", {cmtname})]});
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
@@ -41,7 +41,7 @@ export default {
                             try {
                                 await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "noPermission")]});
                             } catch(e) {
-                                FarbeLog.error("Message", `Error sending message:\n${e}`);
+                                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                             }
                             return;
                         }
@@ -53,7 +53,7 @@ export default {
                                 embeds: cmt.content.embeds.map(embed => messageProcess.processColor(embed))
                             });
                         } catch(e) {
-                            FarbeLog.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                         return;
                     }
@@ -63,7 +63,7 @@ export default {
                             embeds: cmt.content.embeds.map(embed => messageProcess.processColor(embed))
                         });
                     } catch(e) {
-                        FarbeLog.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
             }
         })();

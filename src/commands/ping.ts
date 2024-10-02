@@ -10,14 +10,14 @@ export default {
             try {
                 replyMsg = await msg.reply({embeds:[messageProcess.getFull("ping", "ping")]});
             } catch(e) {
-                FarbeLog.error("Message", `Error sending message:\n${e}`);
+                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
             const ping = Date.now() - start;
             const apiPing = Math.round(Bot.ws.ping);
             try {
                 replyMsg.edit({embeds:[messageProcess.getFull("ping", "pong", {ping, apiPing})]});
             } catch(e) {
-                FarbeLog.error("Message", `Error sending message:\n${e}`);
+                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         })();
     }

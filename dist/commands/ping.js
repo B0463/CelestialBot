@@ -23,7 +23,7 @@ exports.default = {
                 replyMsg = yield msg.reply({ embeds: [messageProcess_1.default.getFull("ping", "ping")] });
             }
             catch (e) {
-                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
             const ping = Date.now() - start;
             const apiPing = Math.round(Bot.ws.ping);
@@ -31,7 +31,7 @@ exports.default = {
                 replyMsg.edit({ embeds: [messageProcess_1.default.getFull("ping", "pong", { ping, apiPing })] });
             }
             catch (e) {
-                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
             }
         }))();
     }

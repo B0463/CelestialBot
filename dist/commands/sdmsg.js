@@ -25,7 +25,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameCountErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -35,7 +35,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameMatchErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -46,7 +46,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameNotExistErr", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
@@ -56,7 +56,7 @@ exports.default = {
                                 yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
                             }
                             catch (e) {
-                                FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                             }
                             return;
                         }
@@ -69,7 +69,7 @@ exports.default = {
                             });
                         }
                         catch (e) {
-                            FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                         return;
                     }
@@ -80,7 +80,7 @@ exports.default = {
                         });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
             }
         }))();

@@ -24,7 +24,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "noPermission")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -34,7 +34,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameCountErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -44,7 +44,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameMatchErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -55,7 +55,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameExistErr", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 case -2:
@@ -63,7 +63,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "fileErr", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
@@ -71,7 +71,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "ok", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
             }
         }))();

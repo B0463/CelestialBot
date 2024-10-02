@@ -25,7 +25,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -35,7 +35,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameCountErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -45,7 +45,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameMatchErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -57,7 +57,7 @@ exports.default = {
                             yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameExistErr", { cmtname })] });
                         }
                         catch (e) {
-                            FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                         break;
                     default:
@@ -67,7 +67,7 @@ exports.default = {
                                     })] });
                         }
                         catch (e) {
-                            FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                            FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                         }
                 }
                 return;
@@ -81,7 +81,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "acessFileErr")] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     return;
                 }
@@ -95,7 +95,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "jsonFileErr")] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     return;
                 }
@@ -105,7 +105,7 @@ exports.default = {
                     yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "processFileErr")] });
                 }
                 catch (e) {
-                    FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                 }
                 return;
             }
@@ -116,7 +116,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "nameExistErr", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 case -2:
@@ -124,7 +124,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "fileErr", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
                     break;
                 default:
@@ -132,7 +132,7 @@ exports.default = {
                         yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "ok", { cmtname })] });
                     }
                     catch (e) {
-                        FarbeLog_1.default.error("Message", `Error sending message:\n${e}`);
+                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
                     }
             }
         }))();
