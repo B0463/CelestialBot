@@ -36,6 +36,14 @@ const Bot = new Client({
         GatewayIntentBits.AutoModerationExecution
     ]
 });
+
+function hasBypass(msg): Number {
+    for(let i=0;i<config.bypassRolesId.length;i++) {
+        if(msg.member.roles.cache.has(config.bypassRolesId[i])) return 1;
+    }
+    return 0;
+}
+
 Bot.login(config.token);
 Bot.on('ready', () => {
     FarbeLog.ok("logged", Bot.user?.tag);
@@ -57,10 +65,6 @@ process.on('uncaughtException', (error: Error) => {
     FarbeLog.error("process", `${error.name}:\x1b[0m ${error.message}`);
 });
 
-export { config }
-
-export default {
-    config
-};
+export { config, hasBypass }
 
 FarbeLog.ok("loaded", "main.ts");

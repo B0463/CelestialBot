@@ -2,7 +2,7 @@ import { Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
 import comments from "../functions/comments";
 import { cmtResponse } from "../functions/comments";
-import { config } from "../main";
+import { hasBypass } from "../main";
 
 export default {
     exec(msg: Message) {
@@ -24,11 +24,7 @@ export default {
                     break;
                 default:
                     if(cmt.content.admin) {
-                        let hasBypass = 0;
-                        for(let i=0;i<config.bypassRolesId.length;i++) {
-                            if(msg.member.roles.cache.has(config.bypassRolesId[i])) hasBypass = 1;
-                        }
-                        if(!hasBypass) {
+                        if(!hasBypass(msg)) {
                             await msg.reply({embeds:[messageProcess.getFull("rowchmsg", "noPermission")]});
                             return;
                         }

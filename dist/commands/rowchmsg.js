@@ -19,12 +19,7 @@ const sync_request_1 = __importDefault(require("sync-request"));
 exports.default = {
     exec(msg) {
         (() => __awaiter(this, void 0, void 0, function* () {
-            let hasBypass = 0;
-            for (let i = 0; i < main_1.config.bypassRolesId.length; i++) {
-                if (msg.member.roles.cache.has(main_1.config.bypassRolesId[i]))
-                    hasBypass = 1;
-            }
-            if (!hasBypass) {
+            if (!(0, main_1.hasBypass)(msg)) {
                 yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
                 return;
             }

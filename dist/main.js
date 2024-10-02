@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
+exports.hasBypass = hasBypass;
 const config = require("../config/bot.json");
 exports.config = config;
 const FarbeLog_1 = __importDefault(require("./functions/FarbeLog"));
@@ -42,6 +43,13 @@ const Bot = new discord_js_1.Client({
         discord_js_1.GatewayIntentBits.AutoModerationExecution
     ]
 });
+function hasBypass(msg) {
+    for (let i = 0; i < config.bypassRolesId.length; i++) {
+        if (msg.member.roles.cache.has(config.bypassRolesId[i]))
+            return 1;
+    }
+    return 0;
+}
 Bot.login(config.token);
 Bot.on('ready', () => {
     var _a;
@@ -60,7 +68,4 @@ Bot.on("error", (error) => {
 process.on('uncaughtException', (error) => {
     FarbeLog_1.default.error("process", `${error.name}:\x1b[0m ${error.message}`);
 });
-exports.default = {
-    config
-};
 FarbeLog_1.default.ok("loaded", "main.ts");
