@@ -1,14 +1,14 @@
 import { Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
 import comments from "../functions/comments";
-import main from "../main";
+import { config } from "../main";
 
 export default {
     exec(msg: Message) {
         (async () => {
             let hasBypass = 0;
-            for(let i=0;i<main.config.bypassRolesId.length;i++) {
-                if(msg.member.roles.cache.has(main.config.bypassRolesId[i])) hasBypass = 1;
+            for(let i=0;i<config.bypassRolesId.length;i++) {
+                if(msg.member.roles.cache.has(config.bypassRolesId[i])) hasBypass = 1;
             }
             if(!hasBypass) {
                 await msg.reply({embeds:[messageProcess.getFull("mkmsg", "noPermission")]});

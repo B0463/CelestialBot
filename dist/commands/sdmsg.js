@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
 const comments_1 = __importDefault(require("../functions/comments"));
-const main_1 = __importDefault(require("../main"));
+const main_1 = require("../main");
 exports.default = {
     exec(msg) {
         (() => __awaiter(this, void 0, void 0, function* () {
@@ -36,8 +36,8 @@ exports.default = {
                 default:
                     if (cmt.content.admin) {
                         let hasBypass = 0;
-                        for (let i = 0; i < main_1.default.config.bypassRolesId.length; i++) {
-                            if (msg.member.roles.cache.has(main_1.default.config.bypassRolesId[i]))
+                        for (let i = 0; i < main_1.config.bypassRolesId.length; i++) {
+                            if (msg.member.roles.cache.has(main_1.config.bypassRolesId[i]))
                                 hasBypass = 1;
                         }
                         if (!hasBypass) {
