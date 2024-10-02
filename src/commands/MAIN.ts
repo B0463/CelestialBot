@@ -1,11 +1,11 @@
 import { APIEmbed, Message } from "discord.js";
 import messageProcess from "../functions/messageProcess";
-import main from "../main";
+import { config } from "../main";
 
 export default {
     exec(msg: Message) {
-        msg.reply({embeds:[
-            messageProcess.getFull("MAIN", undefined, {prefix: main.config.prefix})
-        ]});
+        (async () => {
+            await msg.reply({embeds:[messageProcess.getFull("MAIN", undefined, {prefix: config.prefix})]});
+        })();
     }
 };
