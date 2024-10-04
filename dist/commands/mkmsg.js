@@ -15,65 +15,34 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
 const comments_1 = __importDefault(require("../functions/comments"));
 const main_1 = require("../main");
-const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 exports.default = {
     exec(msg) {
-        (() => __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             if (!(0, main_1.hasBypass)(msg)) {
-                try {
-                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "noPermission")] });
-                }
-                catch (e) {
-                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                }
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "noPermission")] });
                 return;
             }
             let msgsplit = msg.content.split(" ");
             if (msgsplit.length > 2 || msgsplit.length == 1) {
-                try {
-                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameCountErr")] });
-                }
-                catch (e) {
-                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                }
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameCountErr")] });
                 return;
             }
             let cmtname = msg.content.substring(msgsplit[0].length + 1);
             if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-                try {
-                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameMatchErr")] });
-                }
-                catch (e) {
-                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                }
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameMatchErr")] });
                 return;
             }
             let cmtstatus = comments_1.default.createCmt(cmtname);
             switch (cmtstatus) {
                 case -1:
-                    try {
-                        yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameExistErr", { cmtname })] });
-                    }
-                    catch (e) {
-                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                    }
+                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "nameExistErr", { cmtname })] });
                     break;
                 case -2:
-                    try {
-                        yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "fileErr", { cmtname })] });
-                    }
-                    catch (e) {
-                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                    }
+                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "fileErr", { cmtname })] });
                     break;
                 default:
-                    try {
-                        yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "ok", { cmtname })] });
-                    }
-                    catch (e) {
-                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                    }
+                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("mkmsg", "ok", { cmtname })] });
             }
-        }))();
+        });
     }
 };

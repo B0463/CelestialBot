@@ -4,13 +4,7 @@ import { config } from "../main";
 import FarbeLog from "../functions/FarbeLog";
 
 export default {
-    exec(msg: Message) {
-        (async () => {
-            try {
-                await msg.reply({embeds:[messageProcess.getFull("help", undefined, {prefix: config.prefix})]});
-            } catch(e) {
-                FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-            }
-        })();
+    async exec(msg: Message) {
+        await msg.reply({embeds: [messageProcess.getFull("help", undefined, { prefix: config.prefix })]});
     }
 };

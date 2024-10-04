@@ -57,7 +57,12 @@ Bot.on('ready', () => {
 });
 database_1.default.inicialize();
 Bot.on('messageCreate', (msg) => __awaiter(void 0, void 0, void 0, function* () {
-    commands_1.default.init(msg, Bot);
+    try {
+        yield commands_1.default.init(msg, Bot);
+    }
+    catch (e) {
+        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
+    }
 }));
 Bot.on('rateLimit', (info) => {
     FarbeLog_1.default.error("client", `rate limit timeout: ${info.timeout}ms | limit: ${info.limit} | method: ${info.method} | path: ${info.path}`);

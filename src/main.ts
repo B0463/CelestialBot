@@ -52,7 +52,11 @@ Bot.on('ready', () => {
 database.inicialize();
 
 Bot.on('messageCreate', async (msg) => {
-    commands.init(msg, Bot);
+    try {
+        await commands.init(msg, Bot);
+    } catch(e) {
+        FarbeLog.error("Message", `${e.name}:\x1b[0m ${e.message}`);
+    }
 });
 
 Bot.on('rateLimit', (info) => {

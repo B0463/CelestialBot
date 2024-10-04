@@ -13,26 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
-const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 exports.default = {
     exec(msg, Bot) {
-        (() => __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             const start = Date.now();
             let replyMsg;
-            try {
-                replyMsg = yield msg.reply({ embeds: [messageProcess_1.default.getFull("ping", "ping")] });
-            }
-            catch (e) {
-                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-            }
+            replyMsg = yield msg.reply({ embeds: [messageProcess_1.default.getFull("ping", "ping")] });
             const ping = Date.now() - start;
             const apiPing = Math.round(Bot.ws.ping);
-            try {
-                replyMsg.edit({ embeds: [messageProcess_1.default.getFull("ping", "pong", { ping, apiPing })] });
-            }
-            catch (e) {
-                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-            }
-        }))();
+            replyMsg.edit({ embeds: [messageProcess_1.default.getFull("ping", "pong", { ping, apiPing })] });
+        });
     }
 };

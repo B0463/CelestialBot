@@ -15,74 +15,43 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const messageProcess_1 = __importDefault(require("../functions/messageProcess"));
 const comments_1 = __importDefault(require("../functions/comments"));
 const main_1 = require("../main");
-const FarbeLog_1 = __importDefault(require("../functions/FarbeLog"));
 exports.default = {
     exec(msg) {
-        (() => __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             let msgsplit = msg.content.split(" ");
             if (msgsplit.length > 2 || msgsplit.length == 1) {
-                try {
-                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameCountErr")] });
-                }
-                catch (e) {
-                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                }
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameCountErr")] });
                 return;
             }
             let cmtname = msg.content.substring(msgsplit[0].length + 1);
             if (!/^[a-zA-Z0-9_-]+$/.test(cmtname)) {
-                try {
-                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameMatchErr")] });
-                }
-                catch (e) {
-                    FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                }
+                yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameMatchErr")] });
                 return;
             }
             let cmt = comments_1.default.getCmt(cmtname);
             switch (cmt.status) {
                 case -1:
-                    try {
-                        yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameNotExistErr", { cmtname })] });
-                    }
-                    catch (e) {
-                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                    }
+                    yield msg.reply({ embeds: [messageProcess_1.default.getFull("sdmsg", "nameNotExistErr", { cmtname })] });
                     break;
                 default:
                     if (cmt.content.admin) {
                         if (!(0, main_1.hasBypass)(msg)) {
-                            try {
-                                yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
-                            }
-                            catch (e) {
-                                FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                            }
+                            yield msg.reply({ embeds: [messageProcess_1.default.getFull("rowchmsg", "noPermission")] });
                             return;
                         }
                     }
                     if (cmt.content.reply) {
-                        try {
-                            yield msg.reply({
-                                content: cmt.content.content,
-                                embeds: cmt.content.embeds.map(embed => messageProcess_1.default.processColor(embed))
-                            });
-                        }
-                        catch (e) {
-                            FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                        }
-                        return;
-                    }
-                    try {
-                        yield msg.channel.send({
+                        yield msg.reply({
                             content: cmt.content.content,
                             embeds: cmt.content.embeds.map(embed => messageProcess_1.default.processColor(embed))
                         });
+                        return;
                     }
-                    catch (e) {
-                        FarbeLog_1.default.error("Message", `${e.name}:\x1b[0m ${e.message}`);
-                    }
+                    yield msg.channel.send({
+                        content: cmt.content.content,
+                        embeds: cmt.content.embeds.map(embed => messageProcess_1.default.processColor(embed))
+                    });
             }
-        }))();
+        });
     }
 };
